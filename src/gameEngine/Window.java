@@ -65,7 +65,7 @@ public class Window {
          * 		Any additional options or APIs
          * 
          */
-        System.out.println("GLFW compile-time version : " + GLFW. glfwGetVersionString());
+        
         
         
         // Initialize GLFW. Most GLFW functions will not work before doing this.
@@ -75,6 +75,9 @@ public class Window {
         
         else
         	System.out.println("Heee ... you've a glfw init!");
+        
+        System.out.println("GLFW compile-time version : " + GLFW. glfwGetVersionString());
+        
         // modify default hints values
         updateHints();
         
@@ -197,6 +200,29 @@ public class Window {
 		};
 		
 		GLFW.glfwSetKeyCallback(handle, keyCallback);
+	}
+	
+	public void update() {
+		// moteur de rendu du jeu 
+				/*
+				 * Swapping buffers
+				 * 
+				 * GLFW windows by default use double buffering. 
+				 * That means that each window has two rendering buffers; 
+				 * a front buffer and a back buffer. The front buffer is the one being displayed and the back buffer 
+				 * the one you render to.
+				 * When the entire frame has been rendered, 
+				 * the buffers need to be swapped with one another, 
+				 * so the back buffer becomes the front buffer and vice versa.
+				 * 
+				 */
+		        GLFW.glfwSwapBuffers(handle); 
+		        
+		        
+		        
+		        // Poll for window events. The key callback  will only be
+		        // invoked during this call.
+		        GLFW.glfwPollEvents();
 	}
 
 }

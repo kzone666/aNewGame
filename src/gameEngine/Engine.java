@@ -1,24 +1,24 @@
 package gameEngine;
 
-public class Engine implements Runnable {
+public class Engine  {
 
 	
 	private Window window;
 	private StackTraceElement[] threadTrace;
 	private String mode;
-	private final Thread threadLoopGame;
+	//private final Thread threadLoopGame;
 	
 	public Engine(String mode) {
 		this.mode = mode;
-		threadLoopGame = new Thread(this,"GAME_LOOP_THREAD");
+		//threadLoopGame = new Thread(this,"GAME_LOOP_THREAD");
 	}
 	
 	
-	@Override
+	
 	public void run() {
-		 threadTrace = Thread.currentThread().getStackTrace();
-		 if("debug".equals(mode))
-			 printStackThreadTrace();
+		 //threadTrace = Thread.currentThread().getStackTrace();
+		 //if("debug".equals(mode))
+		//	 printStackThreadTrace();
 		 System.out.println("#######################\n#  Thread MAIN run ...#\n#######################");
 		 init();
 		 System.out.println("Goes into loop game ...");
@@ -30,9 +30,9 @@ public class Engine implements Runnable {
 		 terminate();
 	}
 	
-	public  Thread getRunningMainLoopGameThread() {
-		return this.threadLoopGame;
-	}
+	//public  Thread getRunningMainLoopGameThread() {
+	//	return this.threadLoopGame;
+	//}
 	
 	private void init() {
 		// create a an  application window
@@ -50,7 +50,8 @@ public class Engine implements Runnable {
 		//  get input user
 		// update game 
 		// render 
-		Renderer.render(window.getHandle());
+		Renderer.render();
+		window.update();
 	}
 	
 	
