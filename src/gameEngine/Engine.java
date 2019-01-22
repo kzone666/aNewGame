@@ -4,21 +4,13 @@ public class Engine  {
 
 	
 	private Window window;
-	private StackTraceElement[] threadTrace;
-	private String mode;
-	//private final Thread threadLoopGame;
-	
 	public Engine(String mode) {
-		this.mode = mode;
-		//threadLoopGame = new Thread(this,"GAME_LOOP_THREAD");
 	}
 	
 	
 	
 	public void run() {
-		 //threadTrace = Thread.currentThread().getStackTrace();
-		 //if("debug".equals(mode))
-		//	 printStackThreadTrace();
+		
 		 System.out.println("#######################\n#  Thread MAIN run ...#\n#######################");
 		 init();
 		 System.out.println("Goes into loop game ...");
@@ -58,11 +50,6 @@ public class Engine  {
 	private void terminate() {
 		System.out.println("fin");
 		window.close();
-	}
-	
-	private void printStackThreadTrace() {
-		for(int i = 0; i < threadTrace.length; i++)
-			System.out.println(threadTrace[i]);
 	}
 
 }
