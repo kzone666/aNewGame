@@ -2,9 +2,9 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="/home/lraulier/lib/lwjgl-release-3.2.1-custom/lwjgl.jar">
+	<classpathentry kind="lib" path="/home/lraulier/lib/lwjgl-release-3.2.1-custom/lwjgl.jar" sourcepath="/home/lraulier/lib/lwjgl-release-3.2.1-custom/lwjgl-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="file:/home/lraulier/lib/lwjgl-release-3.2.1-custom/"/>
+			<attribute name="javadoc_location" value="jar:file:/home/lraulier/lib/lwjgl-release-3.2.1-custom/lwjgl-javadoc.jar!/"/>
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="/home/lraulier/lib/lwjgl-release-3.2.1-custom/lwjgl-natives-linux"/>
 		</attributes>
 	</classpathentry>
@@ -13,11 +13,18 @@
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="/home/lraulier/lib/lwjgl-release-3.2.1-custom/lwjgl-glfw-natives-linux"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/lraulier/lib/lwjgl-release-3.2.1-custom/lwjgl-opengl.jar" sourcepath="/home/lraulier/lib/lwjgl-release-3.2.1-custom/lwjgl-opengl-javadoc.jar">
+	<classpathentry kind="lib" path="/home/lraulier/lib/lwjgl-release-3.2.1-custom/lwjgl-opengl.jar" sourcepath="/home/lraulier/lib/lwjgl-release-3.2.1-custom/lwjgl-opengl-sources.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="file:/home/lraulier/lib/lwjgl-release-3.2.1-custom/"/>
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="/home/lraulier/lib/lwjgl-release-3.2.1-custom/lwjgl-opengl-natives-linux"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/home/lraulier/lib/lwjgl-release-3.2.1-custom/lwjgl-jemalloc.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/home/lraulier/lib/lwjgl-release-3.2.1-custom/lwjgl-glfw-natives-linux/"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="/home/lraulier/lib/lwjgl-release-3.2.1-custom/lwjgl-jemalloc-natives-linux"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/lraulier/lib/lwjgl-release-3.2.1-custom/lwjgl-javadoc.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

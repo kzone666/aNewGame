@@ -13,11 +13,10 @@ import org.lwjgl.opengl.GL20;
 public class Game {
 	
 	/*
-	 * the fist memeber of my game ;)
+	 * the fist member of my game ;)
 	 * a triangle to be rendered
-	 * 
 	 */
-	float[] vertices = {
+	static float[] vertices = {
 			-0.5f,0.5f,0f,
 			-0.5f,-0.5f,0f,
 			0.5f,-0.5f,0f,
@@ -26,9 +25,14 @@ public class Game {
 			-0.5f,0.5f,0f
 		};
 		
-		int[] indices = {
+	int[] indices = {
 				0,1,3,
 				3,1,2
 		};
+		
+	public static float[] getVertices() {
+		return vertices;
+		
+	}
 	
 }

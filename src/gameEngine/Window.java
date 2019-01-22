@@ -74,9 +74,9 @@ public class Window {
         }
         
         else
-        	System.out.println("Heee ... you've a glfw init!");
+        	//System.out.println("Heee ... you've a glfw init!");
         
-        System.out.println("GLFW compile-time version : " + GLFW. glfwGetVersionString());
+        //System.out.println("GLFW compile-time version : " + GLFW. glfwGetVersionString());
         
         // modify default hints values
         updateHints();
@@ -84,7 +84,7 @@ public class Window {
         // get handle only when all init are ok
 		createHandle();
 		
-		System.out.println("attaxh a key callback to window");
+		//System.out.println("attaxh a key callback to window");
 		provideKeyCallBack();
 	/*
 	 * TODO : put in a method
@@ -161,6 +161,9 @@ public class Window {
 	
 	public void close() {
 		org.lwjgl.glfw.GLFW.glfwDestroyWindow(handle);
+		keyCallback.free();
+		 GLFW.glfwTerminate();
+		 //errorCallback.free();
 	}
 
 	public long getHandle() {
