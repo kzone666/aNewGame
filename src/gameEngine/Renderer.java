@@ -10,6 +10,7 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL15;
 import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.GL30;
+import org.lwjgl.opengles.GLES32;
 import org.lwjgl.system.MemoryStack;
 
 import shaders.VertexShader;
@@ -49,7 +50,7 @@ public class Renderer {
 	
 	public static void render() {
 		//System.out.println("render window " + windowHandle);	
-		
+		//GL15.glEnable(GLES32.GL_DEBUG_OUTPUT);
 		
 		/*
 		 * The try-with-resources Statement
@@ -87,7 +88,7 @@ public class Renderer {
 		GL30.glBindVertexArray(0);
 		
 		
-		VertexShader shader = new VertexShader("src/shader/vertexShader.ver");
+		//VertexShader shader = new VertexShader("src/shader/vertexShader.ver");
 		
 	}
 	

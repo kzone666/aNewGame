@@ -8,9 +8,9 @@ import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.glfw.GLFWKeyCallback;
 import org.lwjgl.opengl.GL;
+import org.lwjgl.opengl.GL15;
 import org.lwjgl.opengl.GL20;
-
-
+import org.lwjgl.opengles.*;
 public class Window {
 	
 	private long handle = 0;
@@ -53,7 +53,7 @@ public class Window {
 		System.out.println("gonna initialize GLFW now ... ");
 		System.out.println("ARE YOU IN THE THREAD MAIN ???");
 		
-        GLFWErrorCallback.createPrint(System.err).set();
+        //GLFWErrorCallback.createPrint(System.err).set();
         
         /*
          * Do not use the version string to parse the GLFW library version. 
@@ -85,7 +85,9 @@ public class Window {
 		createHandle();
 		
 		//System.out.println("attaxh a key callback to window");
-		provideKeyCallBack();
+		//provideKeyCallBack();
+		
+		//GL15.glEnable(GLES32.GL_DEBUG_OUTPUT);
 	/*
 	 * TODO : put in a method
 	 */
@@ -105,12 +107,11 @@ public class Window {
          * because of the input latency it leads to.
          */
         
-        GLFW.glfwSwapInterval(1);
-        
         
         // Make the window visible
         GLFW.glfwShowWindow(handle);
 		GL.createCapabilities();
+		GLFW.glfwSwapInterval(1);
 		// a red background
 		GL20.glClearColor(1.0f, 0.0f, 0.0f, 0.0f);
 	}
@@ -160,9 +161,12 @@ public class Window {
 	}
 	
 	public void close() {
+		//keyCallback.free();
+		//GL15.glDisable(GLES32.GL_DEBUG_OUTPUT);
+		//GLFW.glfwSetKeyCallback(handle, null).free();
 		org.lwjgl.glfw.GLFW.glfwDestroyWindow(handle);
-		keyCallback.free();
 		 GLFW.glfwTerminate();
+		 GL.setCapabilities(null);
 		 //errorCallback.free();
 	}
 
