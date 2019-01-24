@@ -29,25 +29,27 @@ import org.lwjgl.opengl.GL30;
  */
 public class Shader {
 	
-	private final int id_shader;
+	private final int vertexShader;
 	protected int type = GL20.GL_VERTEX_SHADER;
 	protected CharSequence source;
 	private int status;
 	
 	public Shader(String path){
-		System.out.println("#################" + type);
-		this.id_shader = GL20.glCreateShader(type);
+		this.vertexShader = GL20.glCreateShader(type);
 		loadFromFile(path);
 		source();
 		compile();
+		
 	}
 	
 	private void source() {
-		this.source();
+		//this.source();
+		GL20.glShaderSource(vertexShader, source);
 	}
 	
 	private void compile() {
-		this.compile();
+		//this.compile();
+		GL20.glCompileShader(vertexShader);
 	}
 
 	public void checkCompileStatus() {

@@ -13,6 +13,8 @@ import org.lwjgl.opengl.GL30;
 import org.lwjgl.opengles.GLES32;
 import org.lwjgl.system.MemoryStack;
 
+import shaders.FragmentShader;
+import shaders.FragmentShaser;
 import shaders.VertexShader;
 
 import static org.lwjgl.system.MemoryStack.*;
@@ -88,7 +90,8 @@ public class Renderer {
 		GL30.glBindVertexArray(0);
 		
 		
-		//VertexShader shader = new VertexShader("src/shader/vertexShader.ver");
+		VertexShader vertexShader = new VertexShader("src/shaders/vertexShader.vert");
+		FragmentShader fragmentShader = new FragmentShader("src/shaders/fragmentShader.frag");
 		
 	}
 	

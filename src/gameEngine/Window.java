@@ -48,17 +48,7 @@ public class Window {
  
 	 */
 	
-	public void init() { // initialize library GLFW 
-		// MUST initialize some HINTS before create window handle
-		// Setup an error callback. The default implementation
-        // will print the error message in System.err.
-		System.out.println("gonna initialize GLFW now ... ");
-		System.out.println("ARE YOU IN THE THREAD MAIN ???");
-		
-		
-		
-	
-        
+	public void init() { // initialize library GLFW         
         /*
          * Do not use the version string to parse the GLFW library version. 
          * The glfwGetVersion function already provides the version of the running library binary.
@@ -76,12 +66,7 @@ public class Window {
         if(!org.lwjgl.glfw.GLFW.glfwInit()) {
             throw new IllegalStateException("Unable to initialize GLFW");
         }
-        
-        else
-        	//System.out.println("Heee ... you've a glfw init!");
-        
-        //System.out.println("GLFW compile-time version : " + GLFW. glfwGetVersionString());
-        
+             
         // modify default hints values
         updateHints();
         
@@ -147,7 +132,6 @@ public class Window {
 		 * the specified attributes.
 		 * 
 		 */
-		System.out.println("update hints window");
 		
 		glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
 		
