@@ -7,6 +7,8 @@ public class VertexShader extends Shader {
 	
 	public VertexShader(String path) {
 		super(path);
+		System.out.println("###### VERTEX SHADER TYPE ##########" + type);
+
 	}
 
 }
