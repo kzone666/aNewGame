@@ -8,7 +8,7 @@
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="/home/lraulier/lib/lwjgl-release-3.2.1-custom/lwjgl-natives-linux"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/lraulier/lib/lwjgl-release-3.2.1-custom/lwjgl-glfw.jar">
+	<classpathentry kind="lib" path="/home/lraulier/lib/lwjgl-release-3.2.1-custom/lwjgl-glfw.jar" sourcepath="/home/lraulier/lib/lwjgl-release-3.2.1-custom/lwjgl-glfw-sources.jar">
 		<attributes>
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="/home/lraulier/lib/lwjgl-release-3.2.1-custom/lwjgl-glfw-natives-linux"/>
 		</attributes>
@@ -26,5 +26,10 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/home/lraulier/lib/lwjgl-release-3.2.1-custom/lwjgl-javadoc.jar"/>
+	<classpathentry kind="lib" path="/home/lraulier/lib/lwjgl-release-3.2.1-custom/lwjgl-opengles.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="/home/lraulier/lib/lwjgl-release-3.2.1-custom/lwjgl-opengles-natives-linux"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

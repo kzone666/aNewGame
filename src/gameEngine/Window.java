@@ -6,11 +6,13 @@ import static org.lwjgl.opengl.GL11.GL_TRUE;
 
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFWErrorCallback;
+import org.lwjgl.glfw.GLFWErrorCallbackI;
 import org.lwjgl.glfw.GLFWKeyCallback;
 import org.lwjgl.opengl.GL;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL15;
 import org.lwjgl.opengl.GL20;
-
-
+import org.lwjgl.opengles.*;
 public class Window {
 	
 	private long handle = 0;
@@ -19,7 +21,7 @@ public class Window {
 	private String TITLE;
 	private boolean closed;
 	private String ketPressed;
-	GLFWKeyCallback keyCallback;
+	protected GLFWKeyCallback keyCallback;
 	
 	public Window(int width, int height, String title) {
 		this.WIDTH = width;
@@ -53,7 +55,9 @@ public class Window {
 		System.out.println("gonna initialize GLFW now ... ");
 		System.out.println("ARE YOU IN THE THREAD MAIN ???");
 		
-        GLFWErrorCallback.createPrint(System.err).set();
+		
+		
+	
         
         /*
          * Do not use the version string to parse the GLFW library version. 
@@ -86,6 +90,10 @@ public class Window {
 		
 		//System.out.println("attaxh a key callback to window");
 		provideKeyCallBack();
+		
+		provideErrorCallBack();
+		
+		//GL15.glEnable(GLES32.GL_DEBUG_OUTPUT);
 	/*
 	 * TODO : put in a method
 	 */
@@ -105,16 +113,27 @@ public class Window {
          * because of the input latency it leads to.
          */
         
-        GLFW.glfwSwapInterval(1);
-        
         
         // Make the window visible
         GLFW.glfwShowWindow(handle);
 		GL.createCapabilities();
+		GLFW.glfwSwapInterval(1);
 		// a red background
 		GL20.glClearColor(1.0f, 0.0f, 0.0f, 0.0f);
 	}
 	
+	private void provideErrorCallBack() {
+		
+		/*GLFW.glfwSetErrorCallback(new GLFWErrorCallback() {*/
+			GLFWErrorCallback errorCallback  = new GLFWErrorCallback() {
+			@Override
+			public void invoke(int error, long description) {
+				System.out.println("error" + error);	
+			}
+		};	
+		GLFW.glfwSetErrorCallback(errorCallback);
+	}
+
 	private void updateHints() {
 		/*
 		 * https://www.glfw.org/docs/latest/window_guide.html#window_hints
@@ -160,9 +179,15 @@ public class Window {
 	}
 	
 	public void close() {
-		org.lwjgl.glfw.GLFW.glfwDestroyWindow(handle);
-		keyCallback.free();
+		
+		//GL15.glDisable(GLES32.GL_DEBUG_OUTPUT);
+		GLFW.glfwSetKeyCallback(handle, keyCallback).free();
+		GLFW.glfwDestroyWindow(handle);
+		GLFW.glfwSetErrorCallback(null).free();
+		
 		 GLFW.glfwTerminate();
+		 GL.setCapabilities(null);
+		 
 		 //errorCallback.free();
 	}
 
