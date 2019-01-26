@@ -7,7 +7,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import org.lwjgl.opengl.GL20;
-import org.lwjgl.opengl.GL30;
 
 /*
  * glCreateShader creates an empty shader object and returns a non-zero value
@@ -30,12 +29,12 @@ import org.lwjgl.opengl.GL30;
 public class Shader {
 	
 	private final int vertexShader;
-	protected int type = GL20.GL_VERTEX_SHADER;
+	//protected int type;// = GL20.GL_VERTEX_SHADER;
 	protected CharSequence source;
-	private int status;
 	
-	public Shader(String path){
-		this.vertexShader = GL20.glCreateShader(type);
+	public Shader(String path,int type){
+		System.out.println("############ type = " + type + "###########");
+		vertexShader = GL20.glCreateShader(type);
 		loadFromFile(path);
 		source();
 		compile();
@@ -47,17 +46,19 @@ public class Shader {
 		GL20.glShaderSource(vertexShader, source);
 	}
 	
-	private void compile() {
-		//this.compile();
+	private void compile(){
 		GL20.glCompileShader(vertexShader);
+		checkCompileStatus();
 	}
 
 	public void checkCompileStatus() {
-	    status = GL20.glGetShaderi(this.id_shader, GL20.GL_COMPILE_STATUS);
+	    int status = GL20.glGetShaderi(vertexShader, GL20.GL_COMPILE_STATUS);
 		if (status != GL20.GL_TRUE) {
-		    throw new RuntimeException(GL20.glGetShaderInfoLog(this.id_shader));
+			System.err.println("Warning compile Shader code: " + GL20.glGetShaderInfoLog(vertexShader, 1024));
+		    throw new RuntimeException(GL20.glGetShaderInfoLog(vertexShader));
 		}
 	}
+	
 	
 	public void loadFromFile(String path) {
 		StringBuilder builder = new StringBuilder();
@@ -76,11 +77,7 @@ public class Shader {
 	}
 
 	public int getId_shader() {
-		return id_shader;
-	}
-	
-	public int getType() {
-		return this.type;
+		return vertexShader;
 	}
 	
 }

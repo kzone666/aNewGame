@@ -1,13 +1,9 @@
 package shaders;
 
-import org.lwjgl.opengl.GL20;
-
 public class VertexShader extends Shader {
-	protected int type = GL20.GL_VERTEX_SHADER;
 	
-	public VertexShader(String path) {
-		super(path);
-		System.out.println("###### VERTEX SHADER TYPE ##########" + type);
+	public VertexShader(String path,int type) {
+		super(path, type);
 
 	}
 

@@ -1,23 +1,15 @@
 package gameEngine;
 
+import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
-import java.nio.IntBuffer;
-import java.util.Stack;
-
-import org.lwjgl.BufferUtils;
-import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL15;
 import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.GL30;
-import org.lwjgl.opengles.GLES32;
 import org.lwjgl.system.MemoryStack;
 
 import shaders.FragmentShader;
-import shaders.FragmentShaser;
 import shaders.VertexShader;
-
-import static org.lwjgl.system.MemoryStack.*;
 
 
 /*
@@ -46,7 +38,7 @@ import static org.lwjgl.system.MemoryStack.*;
  * where * is the object's type in plural form. All functions of this type have the same signature
  */
 
-public class Renderer {
+public abstract class Renderer {
 	
 	
 	
@@ -54,49 +46,15 @@ public class Renderer {
 		//System.out.println("render window " + windowHandle);	
 		//GL15.glEnable(GLES32.GL_DEBUG_OUTPUT);
 		
-		/*
-		 * The try-with-resources Statement
-		 * 
-		 * The try-with-resources statement is a try statement that declares one or more resources. 
-		 * A resource is an object that must be closed after the program is finished with it. 
-		 * The try-with-resources statement ensures that each resource is closed at the end of the statement. 
-		 * Any object that implements java.lang.AutoCloseable, which includes all objects which implement java.io.Closeable,
-		 * can be used as a resource.
-		 * 
-		 * ##### MUST READ ######
-		 * read more about buffer & lwjgl : https://github.com/LWJGL/lwjgl3-wiki/wiki/1.3.-Memory-FAQ
-		 */
-		try (MemoryStack stack = MemoryStack.stackPush()) {
-		    FloatBuffer vertices = stack.mallocFloat(3 * 6);
-		    vertices.put(-0.6f).put(-0.4f).put(0f);
-		    vertices.put(0.6f).put(-0.4f).put(0f);
-		    vertices.put(0f).put(0.6f).put(0f);
-		    vertices.flip();
-
-		    int vbo = GL15.glGenBuffers();
-		    GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, vbo);
-		    GL15.glBufferData(GL15.GL_ARRAY_BUFFER, vertices, GL15.GL_STATIC_DRAW);
-		}
-		
-		int vao = GL30.glGenVertexArrays();
-		GL30.glBindVertexArray(vao);
+		System.out.println("########### vao " + Loader.getVao());
+		GL30.glBindVertexArray(Loader.getVao());
 		GL20.glEnableVertexAttribArray(0);
-		GL20.glVertexAttribPointer(0, 3, GL11.GL_FLOAT, false, 0, 0);
 		
-		GL11.glDrawArrays(GL15.GL_TRIANGLES,0,3);
+		GL11.glDrawElements(GL15.GL_TRIANGLES,3,GL20.GL_UNSIGNED_INT,0);
 		
 		
 		GL20.glDisableVertexAttribArray(0);
 		GL30.glBindVertexArray(0);
 		
-		
-		VertexShader vertexShader = new VertexShader("src/shaders/vertexShader.vert");
-		FragmentShader fragmentShader = new FragmentShader("src/shaders/fragmentShader.frag");
-		
-	}
-	
-	public static void clearFrameBuffer() {
-		
-		GL20.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
 	}
 }
