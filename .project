@@ -14,4 +14,11 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>src/textures/texture.jpeg</name>
+			<type>1</type>
+			<location>/home/lraulier/Images/texture.jpeg</location>
+		</link>
+	</linkedResources>
 </projectDescription>

@@ -19,14 +19,19 @@ public class Game {
 	 * a triangle to be rendered
 	 */
 	 float[] vertices = {
-			-1.0f,-1.0f,0.0f,
-			1.0f,-1.0f,0.0f,
-			0.0f,1.0f,0.0f
+			 -0.5f, 0.5f, 0f,    // Left top         ID: 0
+		        -0.5f, -0.5f, 0f,   // Left bottom      ID: 1
+		        0.5f, -0.5f, 0f,    // Right bottom     ID: 2
+		        0.5f, 0.5f, 0f  // Right left       ID: 3
+
 		};
 		
-	int[] indices = {
-				0,1,3,
-				3,1,2
+	static int[] indices = {
+			// Left bottom triangle
+	        0, 1, 2,
+	        // Right top triangle
+	        2, 3, 0
+
 		};
 
 	private int shaderProgram;
@@ -76,5 +81,7 @@ public class Game {
 		return vertices;
 		
 	}
-	
+	public static int getIndicesLength() {
+		return indices.length;
+	}
 }

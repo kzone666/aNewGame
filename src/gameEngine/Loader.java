@@ -3,15 +3,10 @@ package gameEngine;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 
-import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL15;
 import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.GL30;
 import org.lwjgl.system.MemoryStack;
-
-import model3D.Model;
-import opengl.VertexArrayObject;
-import opengl.VertexBufferObject;
 
 public class Loader {
 	

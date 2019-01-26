@@ -1,15 +1,9 @@
 package gameEngine;
 
-import java.nio.ByteBuffer;
-import java.nio.FloatBuffer;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL15;
 import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.GL30;
-import org.lwjgl.system.MemoryStack;
-
-import shaders.FragmentShader;
-import shaders.VertexShader;
 
 
 /*
@@ -43,14 +37,12 @@ public abstract class Renderer {
 	
 	
 	public static void render() {
-		//System.out.println("render window " + windowHandle);	
 		//GL15.glEnable(GLES32.GL_DEBUG_OUTPUT);
 		
-		System.out.println("########### vao " + Loader.getVao());
 		GL30.glBindVertexArray(Loader.getVao());
 		GL20.glEnableVertexAttribArray(0);
 		
-		GL11.glDrawElements(GL15.GL_TRIANGLES,3,GL20.GL_UNSIGNED_INT,0);
+		GL11.glDrawElements(GL15.GL_TRIANGLES,Game.getIndicesLength(),GL20.GL_UNSIGNED_INT,0);
 		
 		
 		GL20.glDisableVertexAttribArray(0);
