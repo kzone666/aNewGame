@@ -2,30 +2,28 @@ package gameEngine;
 
 public class Engine  {
 
-	
 	private Window window;
+	
 	public Engine(String mode) {
 	}
 	
 	
 	
 	public void run() {
-		
-		 System.out.println("#######################\n#  Thread MAIN run ...#\n#######################");
-		 init();
-		 System.out.println("Goes into loop game ...");
-		 System.out.println("Close ?? " + window.isClosed());
-		 
-		 while(!window.isClosed()) {
-			 loop();
-		 }
-		 terminate();
+		init();
+		loadGame();
+		while(!window.isClosed()) {
+			loop();
+		}
+		terminate();
 	}
 	
-	//public  Thread getRunningMainLoopGameThread() {
-	//	return this.threadLoopGame;
-	//}
-	
+	private void loadGame() {
+		new Game();
+	}
+
+
+
 	private void init() {
 		// create a an  application window
 		// create an OpenGl context
